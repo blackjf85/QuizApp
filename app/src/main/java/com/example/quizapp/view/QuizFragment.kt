@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuizBinding
 import com.example.quizapp.viewmodel.QuizViewModel
 
@@ -47,6 +48,12 @@ class QuizFragment: Fragment() {
                     correctCount += 1
                 }
                 viewModel.addCorrect(correctCount)
+
+                val bundle = Bundle()
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.countFragment, ResultsFragment::class.java, bundle)
+                    .addToBackStack(null)
+                    .commit()
             }
         }
     }

@@ -10,7 +10,7 @@ class QuizViewModel: ViewModel() {
     val numCorrect: LiveData<Int> get() = _numCorrect
 
     fun addCorrect(num: Int){
-        val numCorrect = numCorrect.value
+        _numCorrect.value = num
     }
 
 }

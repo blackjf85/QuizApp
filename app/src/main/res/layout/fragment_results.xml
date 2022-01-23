@@ -11,19 +11,19 @@
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/resultTv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Results"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        tools:text="Results"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/resultTv"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         app:layout_constraintTop_toBottomOf="@id/resultsHeadingTv"
         app:layout_constraintBottom_toTopOf="@id/scoreTv"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Try Again"/>
+        android:text="@string/play_again"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
