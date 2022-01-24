@@ -18,25 +18,6 @@ class QuizFragment: Fragment() {
 
     private lateinit var viewModel: QuizViewModel
 
-    private fun getQuestions(index: Int): String{
-
-        val quizQuestions = mutableListOf(
-            "Roses are red.",
-            "Violets are purple.",
-            "The sky is green.",
-            "Kotlin is fun.",
-            "Programmers are wizards.")
-
-        return quizQuestions[index]
-    }
-
-    private fun getAnswers(index: Int): Boolean{
-
-        val quizAnswers = mutableListOf(true, false, false, true, true)
-
-        return quizAnswers[index]
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,18 +33,22 @@ class QuizFragment: Fragment() {
         with(binding) {
              var questionNumber = 1
              var numCorrect = 0
-             questionTv.text = getQuestions(questionNumber - 1)
+
+            viewModel.getQuestions(questionNumber - 1)
+
+             questionTv.text = viewModel.question.value.toString()
              submitBtn.text = "Next"
              submitBtn.setOnClickListener {
 
                  if(questionNumber <= 4){
-                     val trueOrFalse = getAnswers(questionNumber - 1)
+                     viewModel.getAnswers(questionNumber - 1)
+                     val trueOrFalse = viewModel.answer.value
 
-                     if(trueOrFalse){
+                     if(trueOrFalse == true){
                          if(trueRb.isChecked){
                              numCorrect++
                          }
-                     }else if(!trueOrFalse){
+                     }else if(trueOrFalse == false){
                          if(falseRb.isChecked){
                              numCorrect++
                          }
@@ -75,17 +60,21 @@ class QuizFragment: Fragment() {
                          submitBtn.text = "Submit"
                      }
 
-                     questionTv.text = getQuestions(questionNumber - 1)
+                     viewModel.getQuestions(questionNumber - 1)
+
+                     questionTv.text = viewModel.question.value.toString()
 
                      answerRg.clearCheck()
                  }else{
-                     val trueOrFalse = getAnswers(questionNumber - 1)
-                     if(trueOrFalse){
+
+                     viewModel.getAnswers(questionNumber - 1)
+                     val trueOrFalse = viewModel.answer.value
+                     if(trueOrFalse == true){
                             if(trueRb.isChecked){
                                 numCorrect++
                             }
                         }else{
-                            if(!trueOrFalse){
+                            if(trueOrFalse == false){
                                 numCorrect++
                             }
                         }
