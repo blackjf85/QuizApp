@@ -1,5 +1,6 @@
 package com.example.quizapp.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,25 @@ class QuizFragment: Fragment() {
 
     private lateinit var viewModel: QuizViewModel
 
+    private fun getQuestions(index: Int): String{
+
+        val quizQuestions = mutableListOf(
+            "Roses are red.",
+            "Violets are purple.",
+            "The sky is green.",
+            "Kotlin is fun.",
+            "Programmers are wizards.")
+
+        return quizQuestions[index]
+    }
+
+    private fun getAnswers(index: Int): Boolean{
+
+        val quizAnswers = mutableListOf(true, false, false, true, true)
+
+        return quizAnswers[index]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,36 +45,59 @@ class QuizFragment: Fragment() {
         _binding = FragmentQuizBinding.inflate(inflater, container, false)
         return binding.root
     }
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[QuizViewModel::class.java]
         with(binding) {
+             var questionNumber = 1
+             var numCorrect = 0
+             questionTv.text = getQuestions(questionNumber - 1)
+             submitBtn.text = "Next"
+             submitBtn.setOnClickListener {
 
-            submitBtn.setOnClickListener {
-                var correctCount = 0
-                if(trueCb1.isChecked){
-                    correctCount += 1
-                }
-                if(!trueCb2.isChecked){
-                    correctCount += 1
-                }
-                if(!trueCb3.isChecked){
-                    correctCount += 1
-                }
-                if(trueCb4.isChecked){
-                    correctCount += 1
-                }
-                if(trueCb5.isChecked){
-                    correctCount += 1
-                }
-                viewModel.addCorrect(correctCount)
+                 if(questionNumber <= 4){
+                     val trueOrFalse = getAnswers(questionNumber - 1)
 
-                val bundle = Bundle()
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.countFragment, ResultsFragment::class.java, bundle)
-                    .addToBackStack(null)
-                    .commit()
-            }
+                     if(trueOrFalse){
+                         if(trueRb.isChecked){
+                             numCorrect++
+                         }
+                     }else if(!trueOrFalse){
+                         if(falseRb.isChecked){
+                             numCorrect++
+                         }
+                     }
+
+                     questionNumber++
+
+                     if(questionNumber == 5){
+                         submitBtn.text = "Submit"
+                     }
+
+                     questionTv.text = getQuestions(questionNumber - 1)
+
+                     answerRg.clearCheck()
+                 }else{
+                     val trueOrFalse = getAnswers(questionNumber - 1)
+                     if(trueOrFalse){
+                            if(trueRb.isChecked){
+                                numCorrect++
+                            }
+                        }else{
+                            if(!trueOrFalse){
+                                numCorrect++
+                            }
+                        }
+
+                     viewModel.addCorrect(numCorrect)
+                     val bundle = Bundle()
+                     parentFragmentManager.beginTransaction()
+                         .replace(R.id.countFragment, ResultsFragment::class.java, bundle)
+                         .addToBackStack(null)
+                         .commit()
+                 }
+             }
         }
     }
 

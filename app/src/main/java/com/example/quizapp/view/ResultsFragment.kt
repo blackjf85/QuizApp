@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentResultsBinding
@@ -45,11 +44,11 @@ class ResultsFragment: Fragment() {
 
                 if(count >= 4){
                     resultsHeadingTv.text = "Passed"
-                    resultTv.text = "Congratulations"
+                    resultTv.text = "Congratulations! :)"
                     againBtn.text = "Again"
                 }else{
                     resultsHeadingTv.text = "Failed"
-                    resultTv.text = "Better Luck Next Time"
+                    resultTv.text = "Better luck next time! :("
                     againBtn.text = "Try Again"
                 }
                 scoreTv.text = "You got $count out of 5 correct and got a score of $score."

@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">Quiz App</string>
-    <string name="instructions_text">Check box next to statements that are true...</string>
+    <string name="instructions_text">True or false...</string>
     <string name="submit_text">Submit</string>
-    <string name="question_1_text">Roses are red.</string>
-    <string name="question_2_text">Violets are purple.</string>
-    <string name="question_3_text">The sky is green.</string>
-    <string name="question_4_text">Kotlin is fun.</string>
-    <string name="question_5_text">Programmers are wizards.</string>
-    <string name="play_again">Play Again</string>
+    <string name="true_text">True</string>
+    <string name="false_text">False</string>
 </resources>

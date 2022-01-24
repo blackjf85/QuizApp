@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp">
@@ -13,122 +14,53 @@
         android:gravity="center"
         android:text="@string/instructions_text"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        app:layout_constraintBottom_toTopOf="@id/question1Tv"
+        app:layout_constraintBottom_toTopOf="@id/questionTv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.50" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/question1Tv"
+        android:id="@+id/questionTv"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="@string/question_1_text"
-        app:layout_constraintBottom_toTopOf="@id/question2Tv"
-        app:layout_constraintEnd_toStartOf="@id/trueCb1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/instructionsTv" />
-
-    <CheckBox
-        android:id="@+id/trueCb1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        tools:text="Roses are red."
         app:layout_constraintTop_toBottomOf="@id/instructionsTv"
-        app:layout_constraintBottom_toTopOf="@id/trueCb2"
-        app:layout_constraintStart_toEndOf="@id/question1Tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:checked="false"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/question2Tv"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/question1Tv"
-        app:layout_constraintBottom_toTopOf="@id/question3Tv"
+        app:layout_constraintBottom_toTopOf="@id/answerRg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/trueCb2"
-        android:text="@string/question_2_text" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <CheckBox
-        android:id="@+id/trueCb2"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/answerRg"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/trueCb1"
-        app:layout_constraintBottom_toTopOf="@id/trueCb3"
-        app:layout_constraintStart_toEndOf="@id/question2Tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:checked="false"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/question3Tv"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/question2Tv"
-        app:layout_constraintBottom_toTopOf="@id/question4Tv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/trueCb3"
-        android:text="@string/question_3_text" />
-
-    <CheckBox
-        android:id="@+id/trueCb3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/trueCb2"
-        app:layout_constraintBottom_toTopOf="@id/trueCb4"
-        app:layout_constraintStart_toEndOf="@id/question3Tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:checked="false"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/question4Tv"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/question3Tv"
-        app:layout_constraintBottom_toTopOf="@id/question5Tv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/trueCb2"
-        android:text="@string/question_4_text" />
-
-    <CheckBox
-        android:id="@+id/trueCb4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/trueCb3"
-        app:layout_constraintBottom_toTopOf="@id/trueCb5"
-        app:layout_constraintStart_toEndOf="@id/question2Tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:checked="false"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/question5Tv"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/question4Tv"
+        app:layout_constraintTop_toBottomOf="@id/questionTv"
         app:layout_constraintBottom_toTopOf="@id/submitBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/trueCb5"
-        android:text="@string/question_5_text" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <CheckBox
-        android:id="@+id/trueCb5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/trueCb4"
-        app:layout_constraintBottom_toTopOf="@id/submitBtn"
-        app:layout_constraintStart_toEndOf="@id/question5Tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:checked="false"/>
+        <RadioButton
+            android:id="@+id/trueRb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/true_text"
+            android:gravity="center"/>
+
+        <RadioButton
+            android:id="@+id/falseRb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/false_text"
+            android:gravity="center"/>
+
+    </RadioGroup>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/question3Tv"
+        app:layout_constraintTop_toBottomOf="@id/questionTv"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
